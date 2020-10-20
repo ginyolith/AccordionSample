@@ -17,40 +17,51 @@ class MainActivity : AppCompatActivity() {
 
         binding.recyclerView.setController(controller)
 
-        controller.setData(
-            AccordionValues(
-            parents = listOf(
-                AccordionValues.Parent(
-                    id = "1",
-                    text = "親カテゴリ１",
-                    children = listOf(
-                        AccordionValues.Child(
-                            id = "1",
-                            text = "子要素1"
-                        ),
-                        AccordionValues.Child(
-                            id = "2",
-                            text = "子要素2"
-                        )
+        val values = AccordionValues(
+            (0..2000).map { parentId ->
+                    AccordionValues.Parent(
+                        id =  parentId.toString(),
+                        text ="親カテゴリ${parentId}",
+                        children = (0..20).map { AccordionValues.Child(it.toString(), "子要素${it}") }
                     )
-                ),
-                AccordionValues.Parent(
-                    id = "2",
-                    text = "親カテゴリ2",
-                    children = listOf(
-                        AccordionValues.Child(
-                            id = "1",
-                            text = "子要素1"
-                        ),
-                        AccordionValues.Child(
-                            id = "2",
-                            text = "子要素2"
-                        )
-                    )
-                )
-            )
+             }
         )
 
-        )
+        controller.setData(values)
+
+//        controller.setData(
+//            AccordionValues(
+//            parents = listOf(
+//                AccordionValues.Parent(
+//                    id = "1",
+//                    text = "親カテゴリ１",
+//                    children = listOf(
+//                        AccordionValues.Child(
+//                            id = "1",
+//                            text = "子要素1"
+//                        ),
+//                        AccordionValues.Child(
+//                            id = "2",
+//                            text = "子要素2"
+//                        )
+//                    )
+//                ),
+//                AccordionValues.Parent(
+//                    id = "2",
+//                    text = "親カテゴリ2",
+//                    children = listOf(
+//                        AccordionValues.Child(
+//                            id = "1",
+//                            text = "子要素1"
+//                        ),
+//                        AccordionValues.Child(
+//                            id = "2",
+//                            text = "子要素2"
+//                        )
+//                    )
+//                )
+//            )
+//        )
+//        )
     }
 }
